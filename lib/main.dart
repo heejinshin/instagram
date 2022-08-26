@@ -22,7 +22,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var tab = 0;
+  var tab = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +31,18 @@ class _MyAppState extends State<MyApp> {
         title: Text("Instagram"),
         actions: [Icon(Icons.add_box_outlined), ],
       ),
-        body: Text('dd', style: Theme.of(context).textTheme.bodyText2,),
+        body: [Text('홈페이지'), Text('샵페이지')][tab],
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (i) =>
+        setState(() {
+          tab = i;
+        }),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: "Shop"),
+          ],
+    ),
 
-          bottomNavigationBar: BottomNavigationBar(
-            // showUnselectedLabels: false,
-            // showSelectedLabels: false,
-            items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "home"),
-              BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined,), label: "shop")
-          ]),
     );
   }
 }
